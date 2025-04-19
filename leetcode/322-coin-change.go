@@ -6,41 +6,38 @@ import (
 )
 
 func coinChange(coins []int, amount int) int {
-	if amount == 0 {
+	buffer := amount
+
+	if buffer == 0 {
 		return 0
 	}
-
-
+	if len(coins) == 1 {
+		buffer = coins[0] - buffer
+		return buffer
+	}
 
 	sort.Ints(coins)
 
-
-
-	buffer := amount
 	count := 0
-	for buffer > 0 {
+	for buffer >= 0 && len(coins) > 0 {
 
-		if len(coins)-1 <= buffer{
-			buffer -= (len(coins)-1)
+		if coins[(len(coins)-1)] <= buffer {
+			buffer -= coins[(len(coins) - 1)]
 			count++
-			
 
-		}else if len(coins)-1 > buffer {
-			coins = coins[:(len(coins)-1)]
+		} else if coins[(len(coins)-1)] > buffer {
+			coins = coins[:(len(coins) - 1)]
 
-			count++
 		}
 
 	}
 
-
-
-	return -1
+	return count
 
 }
 
 func main() {
-	coinChange([]int{1, 2, 5}, 11)
-	coinChange([]int{2}, 3)
-	coinChange([]int{1}, 0)
+	fmt.Println(coinChange([]int{1, 2, 5}, 11))
+	fmt.Println(coinChange([]int{2}, 3))
+	fmt.Println(coinChange([]int{1}, 0))
 }
