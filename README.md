@@ -1,2 +1,1 @@
-leetcode problems
-neetcode practice
+Solutions to leetcode/neetcode problems
