@@ -1,0 +1,10 @@
+[workspace]
+authors = ["ejaz-karim <78738965+ejaz-karim@users.noreply.github.com>"]
+channels = ["conda-forge"]
+name = "coding-challenges"
+platforms = ["win-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
